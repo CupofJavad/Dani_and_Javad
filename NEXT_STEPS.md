@@ -38,6 +38,34 @@ Create the repo on GitHub first (empty, no README), then use your repo URL above
 
 ## 4. Deploy on Vercel
 
+### Option A: Vercel MCP (in Cursor)
+
+Vercel MCP is configured in this project (`.cursor/mcp.json`). To use it:
+
+1. **Reload Cursor** or open Settings → Tools & MCP so it picks up the new server.
+2. When you see **Vercel** with "Needs login", click it and complete the browser OAuth to authorize Cursor.
+3. After that, you can ask the AI to deploy, list deployments, or manage the project via Vercel MCP.
+
+Official docs: [Vercel MCP](https://vercel.com/docs/ai-tooling/vercel-mcp). Cursor is a supported client.
+
+### Option B: Vercel CLI
+
+From the project root:
+
+```bash
+npx vercel login    # if not already logged in
+npx vercel link     # link this folder to a Vercel project (create or select)
+npx vercel --prod   # deploy to production
+```
+
+If the project is already linked (e.g. you imported the repo in the dashboard), `npx vercel --prod` will deploy the current branch.
+
+### Option C: Vercel REST API (CI / scripts)
+
+For automation (e.g. GitHub Actions or a script), use a [Vercel API token](https://vercel.com/account/tokens) and the [Deployments API](https://vercel.com/docs/rest-api/endpoints#deployments). Example: trigger a deployment with `POST https://api.vercel.com/v13/deployments` (with `Authorization: Bearer YOUR_TOKEN` and project/ref in the body). Easiest is still: push to GitHub and let Vercel auto-deploy.
+
+### Option D: Dashboard (import from GitHub)
+
 1. Go to [vercel.com](https://vercel.com) → Add New → Project → Import your GitHub repo.
 2. Build: leave default (**Build Command** `npm run build`, **Output Directory** `.svelte-kit/output`).
 3. **Environment Variables** — add the same ones from your `.env` Wedding Site section:
@@ -47,7 +75,7 @@ Create the repo on GitHub first (empty, no README), then use your repo URL above
    - `SUPABASE_SERVICE_ROLE_KEY` (optional, for admin/export)
    - `ADMIN_SECRET` (optional)
    - `SITE_URL` = your Vercel URL, e.g. `https://your-project.vercel.app`
-4. Deploy. Your site will be live at `https://your-project.vercel.app`.
+4. Deploy. Your site will be live at `https://your-project.vercel.app`. Future pushes to `main` auto-deploy.
 
 ---
 
