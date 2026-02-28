@@ -1,5 +1,6 @@
 # Wedding site – agent context
 
+- **Agent handoff:** For full project history, status, and next steps, read **`docs/agent-handoff/README.md`** first (then 00–06 in that directory). Created for new conversations / MCP handoff.
 - **Project:** Elopement-style wedding site for Dani & Javad. Max **25 guests**. Big Sur area (Garrapata, Pfeiffer Big Sur, Andrew Molera, Julia Pfeiffer Burns).
 - **Stack:** SvelteKit, Vercel, Supabase (RSVP). Site is embeddable in Google Sites (iframe); headers must allow `frame-ancestors` for `https://sites.google.com`.
 - **Config:** Wedding date, venue, capacity, RSVP deadline live in `src/lib/config.ts`. Change there and redeploy when details are confirmed.
