@@ -26,18 +26,14 @@ export const GET: RequestHandler = async ({ url }) => {
   }
 
   const headers = ['name', 'email', 'attending', 'plus_one', 'notes', 'created_at'];
+  const escape = (v: unknown): string => {
+    if (v == null) return '';
+    const s = String(v).replace(/\r?\n/g, ' ').trim();
+    return s.includes(',') || s.includes('"') ? `"${s.replace(/"/g, '""')}"` : s;
+  };
   const csv = [
     headers.join(','),
-    ...(rows ?? []).map((r) =>
-      headers
-        .map((h) => {
-          const v = r[h];
-          if (v == null) return '';
-          const s = String(v);
-          return s.includes(',') || s.includes('"') ? `"${s.replace(/"/g, '""')}"` : s;
-        })
-        .join(',')
-    )
+    ...(rows ?? []).map((r) => headers.map((h) => escape(r[h])).join(','))
   ].join('\n');
 
   return new Response(csv, {

@@ -9,6 +9,12 @@ export interface WeddingConfig {
   venueName: string;
   venueAddress?: string;
   venueMapsUrl?: string;
+  /** Google Maps embed iframe src (Share → Embed a map). Optional. */
+  venueEmbedUrl?: string;
+  /** YouTube embed URL for venue/area video (e.g. "https://www.youtube.com/embed/VIDEO_ID"). Optional. */
+  venueVideoUrl?: string;
+  /** Hashtag for guest photos (e.g. "DaniAndJavad"). Shown in Gallery. Optional. */
+  photoHashtag?: string;
   capacity: number;
   rsvpDeadline: string; // ISO date
   tagline: string;
@@ -29,6 +35,9 @@ export const config: WeddingConfig = {
   venueName: 'Garrapata State Park',
   venueAddress: 'Garrapata State Park, Carmel-by-the-Sea, CA',
   venueMapsUrl: 'https://www.google.com/maps/place/Garrapata+State+Park',
+  venueEmbedUrl: undefined,
+  venueVideoUrl: undefined,
+  photoHashtag: 'DaniAndJavad',
   capacity: 25,
   rsvpDeadline: '2026-04-18',
   tagline: 'An intimate celebration in Big Sur',

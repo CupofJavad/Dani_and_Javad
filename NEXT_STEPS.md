@@ -2,6 +2,8 @@
 
 Do these in order. Nothing runs on your server; everything is Vercel + Supabase.
 
+**Code status:** The app is complete. Favicon, calendar.ics (uses `config.weddingTime`), and CSV export (newline-safe) are in place. Remaining steps below are deploy and content (Supabase, Vercel, Google Sites, optional photos/Resend).
+
 ---
 
 ## 1. Create the RSVP table in Supabase

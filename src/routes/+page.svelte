@@ -37,7 +37,7 @@
   </div>
 </section>
 
-<!-- Location -->
+<!-- Location (ideas from rampatra/wedding-website: map, Uber, video) -->
 <section class="section" id="location">
   <h2>Location</h2>
   <p class="venue-name">{data.config.venueName}</p>
@@ -45,11 +45,28 @@
     <p class="venue-address">{data.config.venueAddress}</p>
   {/if}
   <p>Coastal bluffs, small beaches, and dramatic ocean views. Parking is limited; we encourage carpooling.</p>
-  {#if data.config.venueMapsUrl}
-    <a href={data.config.venueMapsUrl} target="_blank" rel="noopener noreferrer" class="link-button">View on Google Maps</a>
-    <p class="small-print">Garrapata State Park is on Highway 1, Carmel-by-the-Sea, CA. Add a map embed from Google Maps (Share → Embed) in <code>src/routes/+page.svelte</code> if desired.</p>
+  <div class="location-actions">
+    {#if data.config.venueMapsUrl}
+      <a href={data.config.venueMapsUrl} target="_blank" rel="noopener noreferrer" class="link-button">View on Google Maps</a>
+    {/if}
+    {#if data.config.venueAddress}
+      {@const encodedAddress = encodeURIComponent(data.config.venueAddress)}
+      <a href="https://m.uber.com/ul/?action=setPickup&dropoff[formatted_address]={encodedAddress}" target="_blank" rel="noopener noreferrer" class="link-button ride-btn">Book Uber</a>
+      <a href="https://www.lyft.com/ride?id=lyft&destination[address]={encodedAddress}" target="_blank" rel="noopener noreferrer" class="link-button ride-btn">Book Lyft</a>
+    {/if}
+  </div>
+  {#if data.config.venueEmbedUrl}
+    <div class="map-embed">
+      <iframe title="Map of {data.config.venueName}" src={data.config.venueEmbedUrl} width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   {/if}
-  <p class="small-print"><a href="https://www.parks.ca.gov/?page_id=28710">California State Parks Special Event Permits</a></p>
+  {#if data.config.venueVideoUrl}
+    <div class="venue-video">
+      <p class="small-print">A glimpse of the area</p>
+      <iframe title="Venue or area video" src={data.config.venueVideoUrl} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  {/if}
+  <p class="small-print">Garrapata State Park is on Highway 1, Carmel-by-the-Sea, CA. <a href="https://www.parks.ca.gov/?page_id=28710">California State Parks Special Event Permits</a></p>
 </section>
 
 <!-- Events -->
@@ -100,10 +117,13 @@
   <p class="small-print">Share the RSVP link: <a href="/#rsvp">/#rsvp</a>. <a href="/api/rsvp-qr" target="_blank" rel="noopener">QR code</a> for invites.</p>
 </section>
 
-<!-- Gallery -->
+<!-- Gallery (hashtag CTA from rampatra/wedding-website) -->
 <section class="section" id="gallery">
   <h2>Gallery</h2>
   <p>Photos of us and the day. Add images to <code>static/couple-photos/</code> (e.g. gallery-1.jpg) and set <code>config.galleryImages</code> in <code>src/lib/config.ts</code> to use them.</p>
+  {#if data.config.photoHashtag}
+    <p class="hashtag-cta">Help us capture the moment — tag your photos with <strong>#{data.config.photoHashtag}</strong></p>
+  {/if}
   <div class="gallery-grid">
     {#each (data.config.galleryImages && data.config.galleryImages.length ? data.config.galleryImages : ['https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=80', 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&q=80', 'https://images.unsplash.com/photo-1478146896981-b80fe4633303?w=400&q=80']) as src, i}
       <img src={src} alt="Gallery {i + 1}" width="400" height="300" />
@@ -215,6 +235,39 @@
     font-size: 0.9rem;
     color: var(--color-muted);
     margin-top: 1rem;
+  }
+  .location-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  .map-embed {
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 100%;
+  }
+  .map-embed iframe {
+    display: block;
+  }
+  .venue-video {
+    margin-top: 1.5rem;
+  }
+  .venue-video iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 320px;
+    border-radius: 8px;
+    border: 0;
+  }
+  .hashtag-cta {
+    font-size: 1rem;
+    margin: 0.5rem 0 0;
+    color: var(--color-muted);
+  }
+  .hashtag-cta strong {
+    color: var(--color-accent);
   }
   .story-images, .gallery-grid {
     display: grid;

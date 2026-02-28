@@ -1,6 +1,6 @@
 # Dani & Javad — Wedding Site
 
-An intimate elopement-style wedding site (SvelteKit + Vercel), embeddable in Google Sites. RSVP via Supabase, Add to Calendar via .ics.
+An intimate elopement-style wedding site (SvelteKit + Vercel), embeddable in Google Sites. RSVP via Supabase, Add to Calendar via .ics. The app is code-complete; follow **NEXT_STEPS.md** to run the schema, deploy, and embed.
 
 ## Quick start
 
@@ -47,6 +47,16 @@ Add images to **`static/couple-photos/`** (e.g. `hero.jpg`, `story-1.jpg`, `stor
 - `galleryImages: ['/couple-photos/gallery-1.jpg', '/couple-photos/gallery-2.jpg', ...]`
 
 Redeploy and the site will use your photos.
+
+## Location & ride-sharing (optional)
+
+In **`src/lib/config.ts`** you can set:
+
+- **`venueEmbedUrl`** — Google Maps embed iframe `src` (from Maps → Share → Embed a map) to show a map on the Location section.
+- **`venueVideoUrl`** — YouTube embed URL (e.g. `https://www.youtube.com/embed/VIDEO_ID`) for a “glimpse of the area” video.
+- **`photoHashtag`** — e.g. `'DaniAndJavad'`; shown in the Gallery as “Tag your photos with #DaniAndJavad”.
+
+If **`venueAddress`** is set, the site shows **Book Uber** and **Book Lyft** links that open the apps with the venue as destination (inspired by [rampatra/wedding-website](https://github.com/rampatra/wedding-website)).
 
 ## Notion planning
 

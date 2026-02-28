@@ -1,6 +1,6 @@
 # Deploy checklist — do these to go live
 
-**Status:** Build ✅ (verified). GitHub `main` is pushed. Remaining steps need your action.
+**Status:** Code complete ✅ (favicon, calendar.ics from config, CSV export hardened). Build ✅. Remaining steps need your action (Supabase, Vercel, embed).
 
 ---
 

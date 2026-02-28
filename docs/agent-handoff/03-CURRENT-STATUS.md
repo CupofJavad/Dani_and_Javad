@@ -13,6 +13,14 @@
 | Embed | Headers allow frame from sites.google.com (vercel.json + SvelteKit). |
 | Docs | README, AGENTS.md, NOTION_SETUP.md, NEXT_STEPS.md, DEPLOY_CHECKLIST.md, agent-handoff directory. |
 | Vercel MCP config | In `.cursor/mcp.json` (url: https://mcp.vercel.com). Login must be completed by user in Cursor. |
+| Code review | Favicon, calendar.ics (config.weddingTime), CSV export (newline-safe); build verified. |
+
+## Code review (completed)
+
+- **Favicon:** Added `static/favicon.svg` (D&J on accent background); app no longer 404s on favicon.
+- **Calendar .ics:** Now parses `config.weddingTime` (e.g. "3:00 PM") for DTSTART/DTEND instead of hardcoded times.
+- **CSV export:** Notes and other fields are escaped so newlines/commas don’t break the CSV.
+- **Build:** `npm run build` passes.
 
 ## Not done / pending ⏳
 
