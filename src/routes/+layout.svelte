@@ -17,8 +17,12 @@
     <a href="/#story">Our Story</a>
     <a href="/#location">Location</a>
     <a href="/#events">Events</a>
+    <a href="/#travel">Travel</a>
     <a href="/#rsvp">RSVP</a>
     <a href="/#gallery">Gallery</a>
+    {#if data.config.registryUrl}<a href="/#registry">Registry</a>{/if}
+    {#if data.config.contributeVenmoUrl || data.config.contributePayPalUrl || data.config.contributeText || data.config.contributeZellePdfPath}<a href="/#contribute">Contribute</a>{/if}
+    {#if data.config.sharedAlbumUrl}<a href="/#photos">Photos</a>{/if}
     <a href="/#faq">FAQ</a>
   </nav>
 </header>

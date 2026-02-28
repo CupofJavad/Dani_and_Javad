@@ -78,8 +78,31 @@
     <p>{data.config.venueName}</p>
     <div class="add-to-cal">
       <a href="/api/calendar.ics" download="wedding.ics" class="link-button">Add to Calendar (.ics)</a>
+      <a href="/api/calendar.ics" class="link-button link-button-subtle">Subscribe (iCal / Google)</a>
     </div>
+    <p class="small-print">To auto-sync with iCal: Apple Calendar → File → New Calendar Subscription → paste your site URL + <code>/api/calendar.ics</code>. Google: Add calendar by URL, same link. If you update the date/time in config and redeploy, subscribers get the update.</p>
   </div>
+  {#if data.config.dinnerTitle || data.config.dinnerTime}
+  <div class="event-card">
+    <h3>{data.config.dinnerTitle || 'Dinner'}</h3>
+    <p>{new Date(data.config.weddingDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })} {#if data.config.dinnerTime}at {data.config.dinnerTime}{/if}</p>
+    {#if data.config.dinnerVenueName}<p>{data.config.dinnerVenueName}</p>{/if}
+    {#if data.config.dinnerVenueAddress}<p class="venue-address">{data.config.dinnerVenueAddress}</p>{/if}
+    <p class="small-print">Dinner details will be shared with RSVP confirmations.</p>
+  </div>
+  {/if}
+</section>
+
+<!-- Travel (Sacramento / SF) -->
+<section class="section" id="travel">
+  <h2>Travel & getting there</h2>
+  {#if data.config.travelBlurb}<p>{data.config.travelBlurb}</p>{/if}
+  {#if data.config.travelTips && data.config.travelTips.length}
+  <ul class="travel-tips">
+    {#each data.config.travelTips as tip}<li>{tip}</li>{/each}
+  </ul>
+  {/if}
+  <p class="small-print">Carmel-by-the-Sea and Monterey are the closest places to stay. We'll share accommodation suggestions with RSVPs.</p>
 </section>
 
 <!-- RSVP -->
@@ -130,6 +153,47 @@
     {/each}
   </div>
 </section>
+
+<!-- Registry -->
+{#if data.config.registryUrl}
+<section class="section" id="registry">
+  <h2>Gift registry</h2>
+  <p>Your presence is our present. If you'd like to give a gift, we're registered here:</p>
+  <a href={data.config.registryUrl} target="_blank" rel="noopener noreferrer" class="link-button">{data.config.registryLabel || 'Gift registry'}</a>
+</section>
+{/if}
+
+<!-- Contribute / donations -->
+{#if data.config.contributeVenmoUrl || data.config.contributePayPalUrl || data.config.contributeText || data.config.contributeZellePdfPath}
+<section class="section" id="contribute">
+  <h2>Contribute</h2>
+  <p>If you'd like to contribute toward our celebration or honeymoon, we're grateful for any gift. No obligation at all.</p>
+  <div class="contribute-links">
+    {#if data.config.contributeVenmoUrl}
+      <a href={data.config.contributeVenmoUrl} target="_blank" rel="noopener noreferrer" class="link-button">Venmo</a>
+    {/if}
+    {#if data.config.contributePayPalUrl}
+      <a href={data.config.contributePayPalUrl} target="_blank" rel="noopener noreferrer" class="link-button">PayPal</a>
+    {/if}
+    {#if data.config.contributeZellePdfPath}
+      <a href={data.config.contributeZellePdfPath} target="_blank" rel="noopener noreferrer" class="link-button">Zelle (QR code)</a>
+    {/if}
+    {#if data.config.contributeText}
+      <p class="contribute-text">{data.config.contributeText}</p>
+    {/if}
+  </div>
+</section>
+{/if}
+
+<!-- Share your photos -->
+{#if data.config.sharedAlbumUrl}
+<section class="section" id="photos">
+  <h2>Share your photos</h2>
+  <p>Drop your photos from the day in our shared album so we can relive the celebration.</p>
+  <a href={data.config.sharedAlbumUrl} target="_blank" rel="noopener noreferrer" class="link-button">Open shared album</a>
+  <p class="small-print">You can also tag photos with <strong>#{data.config.photoHashtag || 'DaniAndJavad'}</strong> on social media.</p>
+</section>
+{/if}
 
 <!-- FAQ -->
 <section class="section" id="faq">
@@ -285,7 +349,34 @@
     border: 1px solid rgba(0,0,0,0.08);
     border-radius: 8px;
   }
-  .add-to-cal { margin-top: 0.75rem; }
+  .travel-tips {
+    margin: 0.75rem 0 0;
+    padding-left: 1.25rem;
+  }
+  .travel-tips li {
+    margin-bottom: 0.35rem;
+  }
+  .add-to-cal {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .contribute-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.75rem;
+  }
+  .contribute-text {
+    margin: 0.5rem 0 0;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+  .link-button-subtle {
+    font-size: 0.95rem;
+  }
   .rsvp-form {
     display: flex;
     flex-direction: column;

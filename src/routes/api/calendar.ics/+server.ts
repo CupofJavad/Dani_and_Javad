@@ -25,11 +25,13 @@ export function GET() {
   const description = `Ceremony at ${config.venueName}. ${config.tagline}`;
   const location = config.venueAddress || config.venueName;
 
+  const uid = `wedding-${config.weddingDate}-${config.coupleNames.replace(/\s/g, '-')}@dani-javad`;
   const ics = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
     'PRODID:-//Dani & Javad Wedding//EN',
     'BEGIN:VEVENT',
+    `UID:${uid}`,
     `DTSTART:${start}`,
     `DTEND:${end}`,
     `SUMMARY:${summary}`,

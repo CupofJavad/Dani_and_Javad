@@ -21,7 +21,7 @@ Get these from **Supabase Dashboard → Project Settings → API**:
 
 | Variable | Purpose |
 |----------|---------|
-| `ADMIN_SECRET` | Token for `/admin?token=...` and `/api/rsvps/export?token=...` (set your own string) |
+| `ADMIN_SECRET` | Token for `/admin?token=...`, `/planning?token=...`, and `/api/rsvps/export?token=...` (set your own string) |
 | `SITE_URL` | Your live site URL: `https://dani-and-javad.vercel.app` (for QR and emails) |
 | `RESEND_API_KEY` | Resend API key for RSVP confirmation emails |
 | `RESEND_FROM` | From address (e.g. `Dani & Javad <noreply@yourdomain.com>`) |

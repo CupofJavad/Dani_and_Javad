@@ -97,8 +97,10 @@ Then: **Deployments → … → Redeploy** so the new env vars are used.
 ## 6. Optional later
 
 - **Resend:** Set `RESEND_API_KEY` and `RESEND_FROM` in Vercel for RSVP confirmation emails.
-- **Couple photos:** Add images to `static/couple-photos/`, set `heroImage`, `storyImage1`, `storyImage2`, `galleryImages` in `src/lib/config.ts`, push to `main` (Vercel will auto-deploy).
-- **Map / video:** Set `venueEmbedUrl` or `venueVideoUrl` in `src/lib/config.ts` and push.
+- **Couple photos:** Add images to `static/couple-photos/`, set `heroImage`, `storyImage1`, `storyImage2`, `galleryImages` in config; see **docs/PHOTO_GUIDE.md**.
+- **Map / video:** Set `venueEmbedUrl` or `venueVideoUrl` in config.
+- **Planning page:** Bookmark https://dani-and-javad.vercel.app/planning?token=YOUR_ADMIN_SECRET for checklist and role-based tasks.
+- **Registry / contribute / photos:** Set `registryUrl`; Venmo/PayPal/`contributeText`; `sharedAlbumUrl` in config. Zelle QR is at `static/zelle-qr.pdf` and linked when `contributeZellePdfPath` is set.
 
 ---
 

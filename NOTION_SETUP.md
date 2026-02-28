@@ -2,6 +2,8 @@
 
 Use this guide to set up your Notion task board and create the initial wedding planning tasks. The Cursor Notion MCP can create these for you once the board is connected.
 
+**Done:** The initial 16 wedding tasks from the table below (plus day-of checklist) were created in your **✔️ Task List - Personal** database via Notion MCP. Open [Task List - Personal](https://www.notion.so/c2cf9a2a89b94288a84d8fa48a34a7b0) to view and move them to a wedding-specific board if you like.
+
 ## 1. Create or connect a task board
 
 - **Option A (new board):** Duplicate the [Code with Notion Board](https://notion.notion.site/code-with-notion-board) template into your workspace (top bar → duplicate).
