@@ -63,11 +63,13 @@ npx vercel --prod
 ```
 
 - **link:** Choose “Link to existing project” if you already imported the repo on Vercel, or “Create new project” and follow the prompts.
-- **--prod:** Deploys `main` to production. Your site will be at `https://<your-project>.vercel.app`.
+- **--prod:** Deploys `main` to production. Your site is at **https://dani-and-javad.vercel.app**.
 
 ---
 
 ## 4. Vercel — environment variables
+
+If you use the **Supabase ↔ Vercel integration**: set the **public env var prefix** to **`PUBLIC_`** (SvelteKit), not `NEXT_PUBLIC_`. See **`ENV_VARS.md`** for the exact variable names the app expects and which Supabase provides.
 
 In **[Vercel Dashboard](https://vercel.com/dashboard)** → your project → **Settings → Environment Variables**, add (use the same values as in your `.env`):
 
@@ -78,7 +80,7 @@ In **[Vercel Dashboard](https://vercel.com/dashboard)** → your project → **S
 | `SUPABASE_ANON_KEY` | Yes | From Supabase → Settings → API |
 | `SUPABASE_SERVICE_ROLE_KEY` | Optional | For /admin and CSV export |
 | `ADMIN_SECRET` | Optional | Your secret for `/admin?token=...` |
-| `SITE_URL` | Optional | `https://<your-project>.vercel.app` |
+| `SITE_URL` | Optional | `https://dani-and-javad.vercel.app` |
 
 Then: **Deployments → … → Redeploy** so the new env vars are used.
 
@@ -87,7 +89,7 @@ Then: **Deployments → … → Redeploy** so the new env vars are used.
 ## 5. Embed in Google Sites
 
 1. In Google Sites: **Insert → Embed → By URL**.
-2. Paste your Vercel URL (e.g. `https://<your-project>.vercel.app`).
+2. Paste your Vercel URL: **https://dani-and-javad.vercel.app**
 3. Choose **Whole page** → Insert. Test on desktop and mobile.
 
 ---
