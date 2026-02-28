@@ -1,0 +1,113 @@
+/* Wedding site base styles */
+:root {
+  --color-bg: #fdfbf7;
+  --color-text: #2c2c2c;
+  --color-accent: #6b4e71;
+  --color-muted: #6b6b6b;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --space: 1.5rem;
+  --max-width: 720px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(253, 251, 247, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.nav {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.nav a {
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.nav a:hover {
+  color: var(--color-accent);
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space) 4rem;
+}
+
+.site-footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --space: 2rem;
+  }
+}
+
+@media print {
+  .site-header,
+  .site-footer,
+  .nav,
+  .cta-button,
+  .link-button,
+  form,
+  .rsvp-section form {
+    display: none !important;
+  }
+  main {
+    max-width: 100%;
+  }
+  a[href^="/api/calendar"] {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+}

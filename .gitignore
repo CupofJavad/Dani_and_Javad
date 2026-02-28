@@ -1,0 +1,24 @@
+# Dependencies
+node_modules
+
+# Build
+.svelte-kit
+build
+dist
+*.local
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Cursor
+.cursor
+
+# IDE / OS
+.DS_Store
+*.log
+*.tgz
+
+# Vercel
+.vercel
